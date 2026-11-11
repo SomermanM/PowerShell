@@ -1,6 +1,6 @@
 @echo off
 REM SYNOPSIS: Fix WinZip "script error" popups - blocks googletagmanager.com in the Restricted Sites zone and sets WinZip to IE11 emulation (FEATURE_BROWSER_EMULATION 11001), per user and machine-wide.
-REM Type: standalone .cmd (run as admin). BeyondTrust twin: none. Ticket: 416083.
+REM Type: standalone .cmd (run as admin). BeyondTrust twin: Canned Script\Fix-WinZipScriptError.txt. Ticket: 416083.
 setlocal
 set "Z=Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\googletagmanager.com"
 set "F=Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION"
