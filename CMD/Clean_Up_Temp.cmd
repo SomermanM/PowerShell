@@ -1,11 +1,12 @@
 @echo off
 REM SYNOPSIS: Standalone launcher for Clean_Up_Temp.ps1 - cleans C:\Windows\Temp and every user's AppData\Local\Temp (files older than 1 day). Log in C:\Temp.
-REM Type: standalone .cmd, self-elevates (UAC). OS: Windows. Needs Clean_Up_Temp.ps1 in the same folder. Optional arg: days, e.g. Clean_Up_Temp.cmd 7
+REM Type: standalone .cmd, self-elevates (UAC). OS: Windows. Finds Clean_Up_Temp.ps1 beside it, else ..\PS1\. Optional arg: days, e.g. Clean_Up_Temp.cmd 7
 REM BeyondTrust twin: Canned Script "Clean Up Temp" (resource Clean_Up_Temp.ps1, elevated only). Replaces Old Scripts\Clean_Up_Temp.bat.
 setlocal
 set "PS1=%~dp0Clean_Up_Temp.ps1"
+if not exist "%PS1%" set "PS1=%~dp0..\PS1\Clean_Up_Temp.ps1"
 if not exist "%PS1%" (
-    echo Clean_Up_Temp.ps1 not found next to this file: "%PS1%"
+    echo Clean_Up_Temp.ps1 not found beside this file or in "%~dp0..\PS1\"
     pause
     exit /b 2
 )

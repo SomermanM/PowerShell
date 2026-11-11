@@ -8,14 +8,14 @@
     Exit codes: 0 = done (locked files are normal), 1 = not admin, 2 = unexpected error.
     BeyondTrust twin: Canned Script, Command Shell, elevated only:
         powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "%RESOURCE_FILE%"
-    Standalone launcher: CMD\Clean_Up_Temp.cmd (put Clean_Up_Temp.ps1 beside it).
+    Standalone launcher: CMD\Clean_Up_Temp.cmd (finds this file beside it or in ..\PS1\).
 .PARAMETER OlderThanDays
     Only delete items last written more than this many days ago. 0 = everything that isn't locked.
 .EXAMPLE
     .\Clean_Up_Temp.ps1 -WhatIf
     Shows sizes and what would be removed, deletes nothing.
 .NOTES
-    Rewrite of Old Scripts\Clean_Up_Temp.ps1, Nov 11, 2026. OS: Windows (PowerShell 5.1+).
+    Rewrite of Old Scripts\Clean_Up_Temp.ps1, Nov 11, 2026. Filed in Scripts\PS1. OS: Windows (PowerShell 5.1+).
 #>
 [CmdletBinding(SupportsShouldProcess)]
 param(
