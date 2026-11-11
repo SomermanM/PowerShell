@@ -19,3 +19,7 @@ devcontainer.json linguist-language=JSON-with-Comments
 
 # Fix syntax highlighting on GitHub to allow comments
 .vscode/*.json linguist-language=JSON-with-Comments
+
+CMD/*.cmd text eol=crlf
+"Canned Script/*.txt" text eol=crlf
+"Command Sequence/*.txt" text eol=crlf
