@@ -1,0 +1,35 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; LACMTA - Microsoft Edge Policy Configuration
+; Author: Manus AI | July 2026
+; Description: Configures Edge homepage, new tab page, startup
+;              URL, home button, and default search engine (Google)
+; ============================================================
+
+; --- Main Edge Policy Key ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+
+; 1. Home Page URL
+"HomepageLocation"="https://lacmta.sharepoint.com/sites/mymetro2"
+
+; 3. Show the Home Button on the toolbar (1 = Enabled)
+"ShowHomeButton"=dword:00000001
+
+; Ensure the Home Button opens the HomepageLocation URL (not the New Tab Page)
+"HomepageIsNewTabPage"=dword:00000000
+
+; 5. New Tab Page URL
+"NewTabPageLocation"="https://lacmta.sharepoint.com/sites/mymetro2"
+
+; 4. On startup, open a specific list of URLs (value 4)
+"RestoreOnStartup"=dword:00000004
+
+; 2. Default Search Engine: Google (requires Edge restart to apply)
+"ManagedSearchEngines"="[{\"is_default\": true, \"keyword\": \"google.com\", \"name\": \"Google\", \"search_url\": \"https://www.google.com/search?q={searchTerms}\", \"suggest_url\": \"https://www.google.com/complete/search?output=chrome&q={searchTerms}\"}]"
+
+; --- Startup URL (used when RestoreOnStartup = 4) ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\RestoreOnStartupURLs]
+
+; 4. URL to open on startup
+"1"="https://lacmta.sharepoint.com/sites/mymetro2"
