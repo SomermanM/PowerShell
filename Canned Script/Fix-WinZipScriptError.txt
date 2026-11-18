@@ -1,0 +1,15 @@
+REM SYNOPSIS: Fix WinZip "script error" popups - googletagmanager.com to Restricted Sites + WinZip IE11 mode, per signed-in user and HKLM.
+REM Type: BeyondTrust RS Canned Script, Command Shell. Elevation: elevated only. OS: Windows. User must be signed in. Twin: CMD\Fix-WinZipScriptError.cmd
+for /f "delims=" %K in ('reg query HKU ^| findstr /r "S-1-5-21-[0-9-]*$"') do reg add "%K\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\googletagmanager.com" /v http /t REG_DWORD /d 4 /f
+for /f "delims=" %K in ('reg query HKU ^| findstr /r "S-1-5-21-[0-9-]*$"') do reg add "%K\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\googletagmanager.com" /v https /t REG_DWORD /d 4 /f
+for /f "delims=" %K in ('reg query HKU ^| findstr /r "S-1-5-21-[0-9-]*$"') do reg add "%K\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION" /v winzip64.exe /t REG_DWORD /d 11001 /f
+for /f "delims=" %K in ('reg query HKU ^| findstr /r "S-1-5-21-[0-9-]*$"') do reg add "%K\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION" /v winzip32.exe /t REG_DWORD /d 11001 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\googletagmanager.com" /v http /t REG_DWORD /d 4 /f /reg:64
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\googletagmanager.com" /v https /t REG_DWORD /d 4 /f /reg:64
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\googletagmanager.com" /v http /t REG_DWORD /d 4 /f /reg:32
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\googletagmanager.com" /v https /t REG_DWORD /d 4 /f /reg:32
+reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION" /v winzip64.exe /t REG_DWORD /d 11001 /f /reg:64
+reg add "HKLM\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION" /v winzip32.exe /t REG_DWORD /d 11001 /f /reg:32
+for /f "delims=" %K in ('reg query HKU ^| findstr /r "S-1-5-21-[0-9-]*$"') do reg query "%K\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\googletagmanager.com"
+reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\googletagmanager.com" /reg:64
+reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" /v Security_HKLM_only

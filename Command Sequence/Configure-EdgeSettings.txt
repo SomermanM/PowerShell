@@ -1,0 +1,1 @@
+reg import "%RESOURCE_FILE%" /reg:64

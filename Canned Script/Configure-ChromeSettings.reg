@@ -1,0 +1,45 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; LACMTA - Google Chrome Policy Configuration
+; Author: Manus AI | July 2026
+; Description: Configures Chrome homepage, new tab page, startup
+;              URL, home button, and default search engine (Google)
+; Registry path: HKLM\SOFTWARE\Policies\Google\Chrome
+; ============================================================
+
+; --- Main Chrome Policy Key ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+
+; 1. Home Page URL
+"HomepageLocation"="https://lacmta.sharepoint.com/sites/mymetro2"
+
+; Ensure the Home Button opens the HomepageLocation URL (not the New Tab Page)
+"HomepageIsNewTabPage"=dword:00000000
+
+; 3. Show the Home Button on the toolbar (1 = Enabled)
+"ShowHomeButton"=dword:00000001
+
+; 5. New Tab Page URL
+"NewTabPageLocation"="https://lacmta.sharepoint.com/sites/mymetro2"
+
+; 4. On startup, open a specific list of URLs (value 4 = Open a list of URLs)
+"RestoreOnStartup"=dword:00000004
+
+; 2. Default Search Engine - Enable the default search provider
+"DefaultSearchProviderEnabled"=dword:00000001
+
+; 2. Default Search Engine Name
+"DefaultSearchProviderName"="Google"
+
+; 2. Default Search Engine Search URL
+"DefaultSearchProviderSearchURL"="https://www.google.com/search?q={searchTerms}"
+
+; 2. Default Search Engine Suggest URL
+"DefaultSearchProviderSuggestURL"="https://www.google.com/complete/search?output=chrome&q={searchTerms}"
+
+; --- Startup URLs (used when RestoreOnStartup = 4) ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\RestoreOnStartupURLs]
+
+; 4. URL to open on startup
+"1"="https://lacmta.sharepoint.com/sites/mymetro2"
