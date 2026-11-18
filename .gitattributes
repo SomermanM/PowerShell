@@ -28,3 +28,5 @@ CMD/Configure-ChromeSettings.cmd -text -eol
 CMD/Configure-EdgeSettings.cmd -text -eol
 "Command Sequence/Configure-ChromeSettings.txt" -text -eol
 "Command Sequence/Configure-EdgeSettings.txt" -text -eol
+CMD/Set-BlockNtlmv1SSO-Audit.cmd -text -eol
+"Canned Script/Set-BlockNtlmv1SSO-Audit.txt" -text -eol
